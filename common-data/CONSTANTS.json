@@ -1,0 +1,6 @@
+{
+    "DOMAIN_NAME": "@mailfence.com",
+    "ATTACH_FILE_NAME": "file-to-attach.txt",
+    "EMAIL_SUBJECT": "Mail sent in - ",
+    "EMAIL_BODY_MESSAGE": "This is email body to automate test case"
+}
