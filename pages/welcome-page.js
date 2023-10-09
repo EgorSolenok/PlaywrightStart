@@ -11,4 +11,4 @@ exports.WelcomePage = class WelcomePage {
   async goToLogin() {
     await this.getLoginButton.click()
   }
-};
+}

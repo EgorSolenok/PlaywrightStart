@@ -36,4 +36,4 @@ exports.NewMessagePage = class NewMessagePage {
     async sendMessage() {
         await this.getSendButton.click()
     }
-};
+}

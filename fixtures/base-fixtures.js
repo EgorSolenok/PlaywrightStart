@@ -24,15 +24,15 @@ exports.test = base.test.extend({
     },
 
     loginFixture: async ({ welcomePage, loginPage }, use) => {
-        const actualPassword = getPasswordForEnv()
-        const actualLogin = getLoginForEnv()
+        const password = getPasswordForEnv()
+        const login = getLoginForEnv()
 
         await welcomePage.goToLogin()
-        await loginPage.enterCredentials(actualLogin, actualPassword)
+        await loginPage.enterCredentials(login, password)
         await loginPage.clickEnter()
         // @ts-ignore
         await use()
     }
-});
+})
 
 exports.expect = base.expect

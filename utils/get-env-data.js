@@ -1,31 +1,32 @@
 // @ts-check
-const { testData } = require('../test-data/dynamic-data')
+const { testValues } = require('../test-data/dynamic-data')
+const CONSTANTS = require('../common-data/constants.json')
 
 function getLoginForEnv() {
     return (
-        process.env.ENV === 'dev'
+        process.env.ENV === CONSTANTS.DEV_ENV
             ? process.env.DEV_USER_LOGIN
             : process.env.PREPROD_USER_LOGIN)
-        ?? "defaultLogin"
+        ?? CONSTANTS.DEFAULT_VALUE
 }
 
 function getPasswordForEnv() {
     return (
-        process.env.ENV === 'dev'
+        process.env.ENV === CONSTANTS.DEV_ENV
             ? process.env.DEV_USER_PASSWORD
             : process.env.PREPROD_USER_PASSWORD)
-        ?? "defaultPassword"
+        ?? CONSTANTS.DEFAULT_VALUE
 }
 
 function getTestDataForEnv() {
     return (
-        process.env.ENV === 'dev'
-            ? testData['dev']
-            : testData['pre-prod'])
+        process.env.ENV === CONSTANTS.DEV_ENV
+            ? testValues[CONSTANTS.DEV_ENV]
+            : testValues[CONSTANTS.PRE_PROD_ENV])
 }
 
-function getUrlForEnv() {
-    return process.env.BASE_URL ?? "defaultUrl"
+function getBaseUrlForEnv() {
+    return process.env.BASE_URL ?? CONSTANTS.DEFAULT_VALUE
 }
 
-export { getLoginForEnv, getPasswordForEnv, getUrlForEnv, getTestDataForEnv }
+export { getLoginForEnv, getPasswordForEnv, getBaseUrlForEnv, getTestDataForEnv }

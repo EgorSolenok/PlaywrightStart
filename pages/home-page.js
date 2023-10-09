@@ -24,4 +24,4 @@ exports.HomePage = class HomePage {
   async refreshFolder() {
     await this.getRefreshButton.click()
   }
-};
+}

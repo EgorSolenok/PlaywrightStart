@@ -1,6 +1,11 @@
 {
     "DOMAIN_NAME": "@mailfence.com",
+    "MAIL_FOLDER_URL": "flatx/index.jsp#tool=mail",
     "ATTACH_FILE_NAME": "file-to-attach.txt",
-    "EMAIL_SUBJECT": "Mail sent in - ",
-    "EMAIL_BODY_MESSAGE": "This is email body to automate test case"
+    "EMAIL_SUBJECT": "Mail sent at - ",
+    "EMAIL_BODY_MESSAGE": "This is email body to automate test case",
+    "DEV_ENV": "dev",
+    "PRE_PROD_ENV": "pre-prod",
+    "ERROR_LOGIN_BORDER_STYLE" : "1px solid rgb(241, 70, 104)",
+    "DEFAULT_VALUE" : "undefinedValue"
 }

@@ -1,10 +1,10 @@
 // @ts-check
-const { defineConfig, devices } = require('@playwright/test');
-require('dotenv').config();
+require('dotenv').config()
+const path = require('path')
+const { defineConfig, devices } = require('@playwright/test')
+const { STORAGE_STATE_PATH } = require('./common-data/paths.json')
 
 module.exports = defineConfig({
-  globalSetup: 'utils/global-setup.js',
-  testDir: './tests',
   outputDir: 'reporting',
   fullyParallel: true,
   forbidOnly: !!process.env.CI,
@@ -28,22 +28,24 @@ module.exports = defineConfig({
         ...devices['Desktop Chrome'],
         viewport: { width: 1280, height: 720 },
       },
-    }
-    // {
-    //   name: 'local',
-    //   use: {
-    //     baseURL: baseEnvUrl.local.home,
-    //   },
-    // },
-
-    // {
-    //   name: 'ci',
-    //   use: {
-    //     baseURL: process.env.CI
-    //       ? baseEnvUrl.ci.prefix + process.env.GITHUB_REF_NAME + baseEnvUrl.ci.suffix //https://dev-myapp-chapter-2.mydomain.com
-    //       : baseEnvUrl.staging.home,
-    //   },
-
+    },
+    {
+      name: 'setup',
+      testMatch: '**/*.setup.js',
+    },
+    {
+      name: 'authin',
+      testMatch: '**/*.auth.spec.js',
+      dependencies: ['setup'],
+      use: {
+        ...devices['Desktop Chrome'],
+        storageState: STORAGE_STATE_PATH,
+      },
+    },
+    {
+      name: 'authout',
+      use: { ...devices['Desktop Chrome'] },
+      testIgnore: ['**/*auth.spec.js']
+    },
   ],
-});
-
+})

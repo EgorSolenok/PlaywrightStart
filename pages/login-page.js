@@ -19,4 +19,4 @@ exports.LoginPage = class LoginPage {
     async clickEnter() {
         await this.getEnterButton.click()
     }
-};
+}
